@@ -93,7 +93,7 @@
                             </div>
                             <div class="panel-body" id="searchbox">
                                   <form method="post" class="form-horizontal" id="lookup-forms" action="{{url('lookup')}}">
-                                  	{!! crsf_field() !!}
+                                  	{!! csrf_field() !!}
                                     <div class="row">
                                         <input type="hidden" id="test" name="test" value="456">
                                         <div class="col-md-2 col-sm-3 col-xs-3">
