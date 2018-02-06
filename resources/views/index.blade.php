@@ -179,6 +179,7 @@
             var $resultBox = $('#search-result');
             $resultBox.html('');
             dd = $(this).serialize();
+            console.log(dd);
             
             $.ajax({
                 url: $(this).attr('action'),
