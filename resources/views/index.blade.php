@@ -93,7 +93,7 @@
                             </div>
                             <div class="panel-body" id="searchbox">
                                   <form method="post" class="form-horizontal" id="lookup-form" action="{{url('lookup')}}">
-                                  	{!! csrf_field() !!}
+                                  
                                     <div class="row">
                                         <input type="hidden" id="test" name="test" value="456">
                                         <div class="col-md-2 col-sm-3 col-xs-3">
@@ -178,12 +178,13 @@
             var $loading = $('#search-loading');
             var $resultBox = $('#search-result');
             $resultBox.html('');
+            dd = $(this).serialize(); dd._token = {{csrf_token() }};
             
             $.ajax({
                 url: $(this).attr('action'),
                 dataType: 'json',
                 type: 'post',
-                data: $(this).serialize(),
+                data: dd, 
                 beforeSend: function() {
                     $loading.addClass('show').removeClass('hidden');
                     $resultBox.addClass('hidden').removeClass('show');

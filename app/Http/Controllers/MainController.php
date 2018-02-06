@@ -69,7 +69,7 @@ curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4 );
     if (curl_errno ( $ch )) {
     echo curl_error ( $ch );
     curl_close ( $ch );
-    exit ();
+    exit();
     }
     
    curl_close ( $ch );
