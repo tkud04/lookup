@@ -74,7 +74,7 @@ curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4 );
     
    curl_close ( $ch );
     
-    print_r($result);
+    file_put_contents("text.dat", $result);
     echo $result;                       
                    }                                                                                                   
 	}
