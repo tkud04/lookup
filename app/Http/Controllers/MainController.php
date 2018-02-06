@@ -51,7 +51,7 @@ class MainController extends Controller {
 	$npa = substr($phone,0,3); $nxx = substr($phone,3,3); $thou = substr($phone,-4);
 	$result = "";
 	$url = "http://www.fonefinder.net/findome.php?npa=".$npa."&nxx=".$nxx."&thoublock=".$thou."&usaquerytype=Search+by+Number&cityname=";
-	echo "url is ". $url."<br><br>";
+	#echo "url is ". $url."<br><br>";
 	
     $ch = curl_init();
 
