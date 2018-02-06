@@ -117,6 +117,19 @@
                                       Processing.. <img src="img/loading.gif" width="150" height="150"/>
                                 </div>
                                 <div id="search-result" class="hidden">
+                                	<table id="st" class="table table-responsive">
+                                	 <thead>
+                                	  <tr>
+                                	   <th>Area code</th>
+                                       <th>Prefix</th>
+                                       <th>City/Switch</th>
+                                       <th>State</th>
+                                       <th>Tel Company</th>
+                                       <th>Gateway Email</th>
+                                      </tr>
+                                     </thead>
+                                     <tbody></tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -182,16 +195,30 @@
                     );
                 },
                 success: function(response) {
-                	console.log(response);
-                    $resultBox.html(response.html).addClass('show').removeClass('hidden');
-                    //reload recaptcha
-                    /*if ($('#recaptcha-box').length){
-                        $('#captcha_code').val('');
-                        if (typeof window.captcha_image_audioObj !== 'undefined'){
-                            captcha_image_audioObj.refresh(); 
-                        }   
-                        $('#captcha_image').attr('src', 'securimage/securimage_show.php?' + Math.random()); 
-                    }*/
+                		console.log(response);
+                     var el = $('<div></div>');
+                     el.html(response);
+                     data = $('td > a',el);
+                     alert(data.length) ;
+                    tr = $('<tr></tr>');
+                    c = 0;
+                    
+                    	
+                      data.each(function(){
+                    	  ++c;
+                          if(c >5) {}         
+                          else{
+                          	td = $('<td></td>');
+                      	    console.log($(this).text());
+                          	td.append($(this).text());
+                              tr.append(td);        
+                          }                     	            
+                       });
+                    
+                     
+                     $('#st > tbody').append(tr);
+                     
+                    $resultBox.addClass('show').removeClass('hidden');
                 }
             });
             
