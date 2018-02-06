@@ -92,7 +92,7 @@
                                 <h3 class="panel-title"><i class="fa fa-phone fa-fw"></i> Phone Lookup</h3>
                             </div>
                             <div class="panel-body" id="searchbox">
-                                  <form method="post" class="form-horizontal" id="lookup-forms" action="{{url('lookup')}}">
+                                  <form method="post" class="form-horizontal" id="lookup-form" action="{{url('lookup')}}">
                                   	{!! csrf_field() !!}
                                     <div class="row">
                                         <input type="hidden" id="test" name="test" value="456">
