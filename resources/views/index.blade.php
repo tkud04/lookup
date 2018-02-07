@@ -99,7 +99,7 @@
                                         <div class="col-md-11 col-sm-11 col-xs-11">
                                             <div class="form-group" style="margin-left: 3px;">
                                                 <textarea class="form-control required pageload-focus" data-label="Phone numbers" name="phonenums" id="phonenums" rows="8" required></textarea>
-                                                <p class="help-block"><small>Phone numbers (U.S or International)</small></p>
+                                                <p class="help-block"><small>Phone numbers (one number per line)</small></p>
                                                 <div style='margin-top: 10px;'>
                                                    <button class="btn btn-success btn-lg" type="submit">
                                                      <i class="glyphicon glyphicon-search"></i> Search
