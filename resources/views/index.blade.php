@@ -156,6 +156,8 @@
         $('#lookup-form').submit(function(e){
             var valError = false;
             var errors = '';
+            $('#st > tbody').html("");
+            
             var $requiredFields = $(this).find('.required');
             if ($requiredFields.length){
                 $requiredFields.each(function( index ) {
