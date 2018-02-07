@@ -36,18 +36,23 @@ class MainController extends Controller {
           #dd($req);
                
                 $validator = Validator::make($req, [
-                             'phonenum' => 'required|numeric',
+                             'phonenums' => 'required',
                    ]);
          
                  if($validator->fails())
                   {
                        $messages = $validator->messages();
                        return redirect()->back()->withInput()->with('errors',$messages);
+                       #return error Ajax style 
                  }
                 
                  else
                  { 
-                 	 $phone = $_POST["phonenum"];
+                 	 $phonenums = $req["phonenums"];
+	$arr = explode("\n", $phonenums);
+	$ret = array();
+	
+	foreach($arr as $phone){
 	$npa = substr($phone,0,3); $nxx = substr($phone,3,3); $thou = substr($phone,-4);
 	$result = "";
 	$url = "http://www.fonefinder.net/findome.php?npa=".$npa."&nxx=".$nxx."&thoublock=".$thou."&usaquerytype=Search+by+Number&cityname=";
@@ -72,10 +77,11 @@ curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4 );
     exit();
     }
     
+    array_push($ret, $result);
    curl_close ( $ch );
+   } 
     
-    #file_put_contents("text.dat", $result);
-    return htmlspecialchars($result);                       
+    return json_encode($ret);                       
                    }                                                                                                   
 	}
 

@@ -96,14 +96,10 @@
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <div class="row">
                                         <input type="hidden" id="test" name="test" value="456">
-                                        <div class="col-md-2 col-sm-3 col-xs-3">
-                                            <input type="text" class="form-control input-lg required" data-label="Country Code" id="cc" name="cc" value="1" required> 
-                                            <p class="help-block"><small>country code "1" for US / Canada</small></p>
-                                        </div>
-                                        <div class="col-md-9 col-sm-8 col-xs-8">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control required input-lg pageload-focus" data-label="Phone number" name="phonenum" id="phonenum"  required/>
-                                                <p class="help-block"><small>Phone number (U.S or International)</small></p>
+                                        <div class="col-md-11 col-sm-11 col-xs-11">
+                                            <div class="form-group" style="margin-left: 3px;">
+                                                <textarea class="form-control required pageload-focus" data-label="Phone numbers" name="phonenums" id="phonenums" rows="8" required></textarea>
+                                                <p class="help-block"><small>Phone numbers (U.S or International)</small></p>
                                                 <div style='margin-top: 10px;'>
                                                    <button class="btn btn-success btn-lg" type="submit">
                                                      <i class="glyphicon glyphicon-search"></i> Search
@@ -152,7 +148,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
-    <script>
+        <script>
     	
     $(document).ready(function(){
 
@@ -177,15 +173,13 @@
             
             var $loading = $('#search-loading');
             var $resultBox = $('#search-result');
-            $resultBox.html('');
-            dd = $(this).serialize();
-            console.log(dd);
+            
             
             $.ajax({
                 url: $(this).attr('action'),
-                dataType: 'json',
                 type: 'post',
-                data: dd, 
+                data: $(this).serialize(),
+                dataType: "json", 
                 beforeSend: function() {
                     $loading.addClass('show').removeClass('hidden');
                     $resultBox.addClass('hidden').removeClass('show');
@@ -197,11 +191,15 @@
                     );
                 },
                 success: function(response) {
-                		console.log(response);
-                     var el = $('<div></div>');
-                     el.html(response);
+                	//r = JSON.decode(response);
+                	console.log(response.length);
+                
+                   for(var i = 0; i < response.length; i++){
+                   
+                   el = $('<div></div>');
+                     el.html(response[i]);
                      data = $('td > a',el);
-                     alert(data.length) ;
+                     //alert(data.length) ;
                     tr = $('<tr></tr>');
                     c = 0;
                     
@@ -219,7 +217,8 @@
                     
                      
                      $('#st > tbody').append(tr);
-                     
+                    } 
+                    
                     $resultBox.addClass('show').removeClass('hidden');
                 }
             });
