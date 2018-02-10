@@ -61,7 +61,10 @@ class MainController extends Controller {
                           array_push($ret, $result);
                       } 
     
-                       return json_encode($ret);                       
+                       $ss = $this->helpers->getCarrierNames();
+                       $raw = $this->helpers->getGateways();
+                       $ret2 = ["ret" => $ret, "ss" => $ss, "raw" => $raw, "nums" => $arr];
+                       echo json_encode($ret2);           
                    }                                                                                                   
 	}
 

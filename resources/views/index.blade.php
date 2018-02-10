@@ -193,38 +193,58 @@
                     );
                 },
                 success: function(response) {
-                	//r = JSON.decode(response);
-                	console.log(response.length);
+                	console.log(response);
+                    ss = response.ss; raw = response.raw; nums = response.nums;
                 
-                   for(var i = 0; i < response.length; i++){
-                   
+                   for(var i = 0; i < response.ret.length; i++){
+                   num = nums[i];
                    el = $('<div></div>');
-                     el.html(response[i]);
+                     el.html(response.ret[i]);
                      data = $('td > a',el);
-                     //alert(data.length) ;
+
                     tr = $('<tr></tr>');
                     c = 0;
-                    
+                    carrier = "";
                     	
                       data.each(function(){
-                    	  ++c;
+                    	  ++c;                          
                           if(c >5) {}         
                           else{
+                          	if(c == 5) carrier = $(this).text();
                           	td = $('<td></td>');
                       	    console.log($(this).text());
                           	td.append($(this).text());
                               tr.append(td);        
-                          }                     	            
+                          }                              
                        });
                     
+                       if(carrier != ""){
+                          	console.log(carrier);
+                              if(carrier in ss){
+                                  gwcode = ss[carrier];
+                                  gwsyntax = raw[gwcode];
+                                  
+                                  gbana = "";
+                                  for(var q = 0; q < gwsyntax.length; q++){                               	
+                                  	addy = gwsyntax[q].split('@');
+                                      gbana += num + "@" + addy[1] + "<br>";
+                                  } 
+                                  
+                                  td = $('<td></td>');
+                                  td.append(gbana);
+                                  tr.append(td);
+      		                } 
+                          }               	    
                      
                      $('#st > tbody').append(tr);
                     } 
                     
                     $resultBox.addClass('show').removeClass('hidden');
+                    
                 }
             });
             
+            response = "";ss = "";raw=""; nums="";
             return false;
             
         });
