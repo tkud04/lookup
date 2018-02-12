@@ -222,7 +222,7 @@
                           	console.log(carrier);
                               for(var key in ss){
                               	if(stristr(carrier, key) != false){
-                                  gwcode = ss[carrier];
+                                  gwcode = ss[key];
                                   gwsyntax = raw[gwcode];
                                   
                                   gbana = "";
