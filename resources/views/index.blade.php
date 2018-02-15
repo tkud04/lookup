@@ -237,6 +237,7 @@
                                   td = $('<td></td>');
                                   td.append(gbana);
                                   tr.append(td);
+                                  break;
                                 } 
       		                } 
                           }               	    
