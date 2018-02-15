@@ -220,11 +220,11 @@
                     
                        if(carrier != ""){
                           	//console.log("carrier: " + carrier + ", key: " + key);
-                              for(var key in ss){
-                              	console.log("carrier: " + carrier + ", key: " + key);
+                              for(var key in ss){                             	
                               	if(stristr(carrier, key) != false){
-                                  gwcode = ss[key];
-                                  gwsyntax = raw[gwcode];
+                              	console.log("carrier: " + carrier + ", key: " + key);
+                                  //gwcode = ss[key];
+                                  gwsyntax = raw[key];
                                   
                                   gbana = "";
                                   for(var q = 0; q < gwsyntax.length; q++){                               	
