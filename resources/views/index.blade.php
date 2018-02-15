@@ -223,8 +223,8 @@
                               for(var key in ss){                             	
                               	if(stristr(carrier, key) != false){
                               	console.log("carrier: " + carrier + ", key: " + key);
-                                  //gwcode = ss[key];
-                                  gwsyntax = raw[key];
+                                  gwcode = ss[key];
+                                  gwsyntax = raw[gwcode];
                                   
                                   gbana = "";
                                   for(var q = 0; q < gwsyntax.length; q++){                               	
