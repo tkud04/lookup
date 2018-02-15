@@ -219,8 +219,9 @@
                        });
                     
                        if(carrier != ""){
-                          	console.log(carrier);
+                          	//console.log("carrier: " + carrier + ", key: " + key);
                               for(var key in ss){
+                              	console.log("carrier: " + carrier + ", key: " + key);
                               	if(stristr(carrier, key) != false){
                                   gwcode = ss[key];
                                   gwsyntax = raw[gwcode];
